@@ -2,6 +2,7 @@ from datetime import datetime
 from functools import wraps
 
 from flask import Flask, render_template, request, url_for, session, redirect
+from sqlalchemy import or_
 
 import config
 from exts import db
@@ -28,6 +29,17 @@ def index():
         'prescriptions': Prescription.query.order_by(Prescription.pre_date.desc()).all()
     }
     return render_template('index.html', **context)
+
+
+@app.route('/search/')
+def search():
+    key_word = request.args.get('key_word')
+    prescriptions = Prescription.query.filter(
+        or_(Prescription.diagnosis.contains(key_word), Prescription.comments.contains(key_word))).all()
+    if prescriptions:
+        return render_template('index.html', prescriptions=prescriptions)
+    else:
+        return render_template('norecord.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
