@@ -25,30 +25,4 @@
 
 ##系统相关功能截图
 
-首页
-
-![](.\static\images\home.png)
-
-
-
-增加处方点评页面：
-
-![](.\static\images\add_comment.png)
-
-
-
-登录页面：
-
-![](.\static\images\login.png)
-
-
-
-注册页面：
-
-![](.\static\images\register.png)
-
-
-
-查询页面：
-
-![](.\static\images\search.png)
+请参考README.pdf
