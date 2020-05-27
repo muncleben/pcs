@@ -1,0 +1,5 @@
+##ignore below folder and files
+migrations
+venv
+.idea
+__pycache__

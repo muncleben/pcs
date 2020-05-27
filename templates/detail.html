@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block title %}点评详情-{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}">
+{% endblock %}
+
+{% block main %}
+    <h3 class="page-title">处方点评详情</h3>
+    <div class="pre-comment-detail">
+        <P><span class="pre-comment-detail-font">单&ensp;据&ensp;号：</span>{{ pre_item.t_id }}</P>
+        <P><span class="pre-comment-detail-font">是否合理：</span>{{ pre_item.reasonable }}</P>
+        <P><span class="pre-comment-detail-font">诊&emsp;&emsp;断：</span>{{ pre_item.diagnosis }}</P>
+        <P><span class="pre-comment-detail-font">点&emsp;&emsp;评：</span>{{ pre_item.comments}}</P>
+        <P><span class="pre-comment-detail-font">处方日期：</span>{{ pre_item.pre_date.strftime("%Y-%m-%d") }}</P>
+        <P><span class="pre-comment-detail-font">处方医师：</span>{{ pre_item.prescriber }}</P>
+        <P><span class="pre-comment-detail-font">处方金额：</span>{{ pre_item.pre_amount }}</P>
+        <p><span class="pre-comment-detail-font">科&emsp;&emsp;室：</span>{{ pre_item.section }}</p>
+        <P><span class="pre-comment-detail-font">患者姓名：</span>{{ pre_item.name }}</P>
+        <P><span class="pre-comment-detail-font">患者性别：</span>{{ pre_item.gender }}</P>
+        <P><span class="pre-comment-detail-font">患者年龄：</span>{{ pre_item.age }}</P>
+        <P><span class="pre-comment-detail-font">单&emsp;&emsp;联：</span>{{ pre_item.first_page }}</P>
+        <P><span class="pre-comment-detail-font">双&emsp;&emsp;联：</span>{{ pre_item.second_page }}</P>
+        <P><span class="pre-comment-detail-font">三&emsp;&emsp;联：</span>{{ pre_item.third_page }}</P>
+        <P><span class="pre-comment-detail-font">注&ensp;射&ensp;剂</span>：{{ pre_item.injection }}</P>
+
+    </div>
+
+{% endblock %}

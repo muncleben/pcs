@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}处方点评{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pre_comment.css') }}">
+{% endblock %}
+
+{% block main %}
+    <h3 class="page-title">处方点评</h3>
+    <form action="" method="post">
+        <div class="form-container">
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="单据号" name="t_id">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="姓名" name="name">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="性别" name="gender">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="年龄" name="age">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="处方日期" name="pre_date">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="诊断" name="diagnosis">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="单联" name="first_page">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="两联" name="second_page">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="三联" name="third_page">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="注射剂" name="injection">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="处方金额" name="pre_amount">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="处方医师" name="prescriber">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="科室" name="section">
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" class="form-control" type="text" placeholder="处方是否合理" name="reasonable">
+            </div>
+            <div class="form-group">
+                <textarea name="comments" rows="5" class="form-control" placeholder="请输入处方点评内容"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary">提交</button>
+            </div>
+
+        </div>
+    </form>
+{% endblock %}
+

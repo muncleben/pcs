@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}首页{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block main %}
+    <ul>
+        {% for prescription in prescriptions %}
+        <li>
+            <div class="avatar-group">
+                <img src="{{ url_for('static', filename='images/doctor.jpg') }}" alt="" class="avatar">
+            </div>
+            <div class="pre-group">
+                <div class="pre-info">
+                    <p class="diagnosis"><span>诊断：</span><a href="{{ url_for('detail', pre_id=prescription.id)}}">{{ prescription.diagnosis }}</a></p>
+                    <p class="comments"><span>点评：</span>{{ prescription.comments }}</p>
+                    <span class="section"><span>科室：</span>{{ prescription.section }}</span>
+                    <span class="t_id"><span>单据号：</span>{{ prescription.t_id }}</span>
+                    <span class="pre_date"><span>处方日期：</span>{{ prescription.pre_date.strftime("%Y-%m-%d") }}</span>
+                    <span class="reasonable"><span>处方是否合理：</span>{{ prescription.reasonable }}</span>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

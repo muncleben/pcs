@@ -1,0 +1,9 @@
+.login-form-container {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.form-title {
+    text-align: center;
+    font-weight: bold;
+}
