@@ -49,8 +49,8 @@ def login():
     else:
         phone = request.form.get('phone')
         password = request.form.get('password')
-        user = User.query.filter(User.phone == phone, User.password == password).first()
-        if user:
+        user = User.query.filter(User.phone == phone).first()
+        if user and user.check_password(password):
             session['user_id'] = user.id
             #如果31天内都不需要重新登录
             session.permanent = True

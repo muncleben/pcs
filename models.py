@@ -1,5 +1,7 @@
 import datetime
 
+from werkzeug.security import generate_password_hash, check_password_hash
+
 from exts import db
 
 
@@ -9,6 +11,19 @@ class User(db.Model):
     phone = db.Column(db.String(11), nullable = False)
     username = db.Column(db.String(18), nullable = False)
     password = db.Column(db.String(100), nullable = False)
+
+    def __init__(self, *args, **kwargs):
+        phone = kwargs.get('phone')
+        username = kwargs.get('username')
+        password = kwargs.get('password')
+
+        self.phone = phone
+        self.username = username
+        self.password = generate_password_hash(password)
+
+    def check_password(self, input_password):
+        pwd_check_result = check_password_hash(self.password, input_password)
+        return pwd_check_result
 
 
 class Prescription(db.Model):
