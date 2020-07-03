@@ -8,6 +8,7 @@ import config
 from exts import db
 from models import User, Prescription
 
+
 app = Flask(__name__)
 app.config.from_object(config)
 db.init_app(app)
@@ -25,10 +26,23 @@ def login_required(func):
 
 @app.route('/')
 def index():
-    context = {
-        'prescriptions': Prescription.query.order_by(Prescription.pre_date.desc()).all()
-    }
-    return render_template('index.html', **context)
+    # prescriptions = Prescription.query.order_by(Prescription.pre_date.desc()).all()
+    # page = request.args.get(get_page_parameter(),type=int,default=1)
+    # start = (page-1)*config.PER_PAGE
+    # end = start + config.PER_PAGE
+    # prescriptions = Prescription.query.slice(start,end)
+    # pagination = Pagination(bs_version=3,page=page,total=Prescription.query.count())
+    # context = {
+    #     'prescriptions': prescriptions,
+    #     'pagination': pagination
+    # }
+    #
+    #
+    # return render_template('index.html', **context)
+
+    page = request.args.get('page', 1, type=int)
+    prescriptions = Prescription.query.paginate(page=page, per_page=2)
+    return render_template('index.html', prescriptions=prescriptions)
 
 
 @app.route('/search/')
@@ -127,7 +141,6 @@ def pre_comment():
 def detail(pre_id):
     pre_item = Prescription.query.filter(Prescription.id == pre_id).first()
     return render_template('detail.html', pre_item=pre_item)
-
 
 
 @app.context_processor

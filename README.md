@@ -47,3 +47,10 @@
 ## 系统相关功能截图
 
 请参考README.pdf
+
+#Install flask
+
+#Install dependance package
+
+#Run
+python manage.py runserver -h 0.0.0.0 -p 8000

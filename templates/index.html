@@ -7,8 +7,10 @@
 {% endblock %}
 
 {% block main %}
+<div class="main">
+    <!--<h3 class="page-title">已点评处方列表</h3>-->
     <ul>
-        {% for prescription in prescriptions %}
+        {% for prescription in prescriptions.items %}
         <li>
             <div class="avatar-group">
                 <img src="{{ url_for('static', filename='images/doctor.jpg') }}" alt="" class="avatar">
@@ -25,6 +27,18 @@
             </div>
         </li>
         {% endfor %}
+        <!--Add paginate function-->
+        {% for page_num in prescriptions.iter_pages() %}
+        {% if page_num %}
+        <a class="btn btn-outline-info mb-4" href="{{ url_for('index', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+        ...
+        {% endif %}
+        {% endfor %}
     </ul>
+
+
+</div>
+
 
 {% endblock %}

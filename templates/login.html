@@ -7,14 +7,15 @@
 {% endblock %}
 
 {% block main %}
+<div class="main">
     <h3 class="page-title">登录</h3>
     <form class="form-horizontal" action="{{ url_for('login') }}" method="post">
         <div class="form-container">
             <div class="form-group">
-                    <input type="text" class="form-control" placeholder="手机号码" name="phone">
+                <input type="text" class="form-control" placeholder="手机号码" name="phone">
             </div>
             <div class="form-group">
-                    <input type="password" class="form-control" placeholder="密码" name="password">
+                <input type="password" class="form-control" placeholder="密码" name="password">
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">登录</button>
@@ -22,4 +23,6 @@
         </div>
 
     </form>
+</div>
+
 {% endblock %}
